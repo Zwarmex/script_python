@@ -9,7 +9,7 @@ def game_one():
         "le programme.\n")
     minimum = input("Tout d'abord, veuillez entrer le nombre minimum :\n")
     maximum = input("Ensuite, veuillez entrer le nombre maximum :\n")
-    random_number = randint(minimum, maximum)
+    random_number = randint(int(minimum), int(maximum))
 
     nbr = input("\n>Devinez le nombre en un minimum d'essai. \n>Quel nombre choissisez vous ? : \n>> ")
 
@@ -43,20 +43,18 @@ def game_one():
 
 
 def game_two():
-    pass
+    print("Vous avez choisi le jeu Rock-Paper-Scissors (Pierre-Papier-Ciseau)\n")
 
 
 def main():
     parser = argparse.ArgumentParser(
         description='Choisisser le jeu que vous désirez entre le GuessTheNumber et le Pierre/Feuille/Ciseau')
-    parser.add_argument('g', metavar='gtn', type=str, help='GuessTheNumber')
-    parser.add_argument('r', metavar='rps', type=str, help='Rock-Paper_Scissors')
+    parser.add_argument('game', metavar='game', type=int, help='Entrez 1 pour le premier jeu et 2 pour le deuxième')
     args = parser.parse_args()
-    guess_the_number = args.g
-    rock_paper_scissors = args.r
-    if guess_the_number:
+    game_choice = args.game
+    if game_choice == 1:
         game_one()
-    elif rock_paper_scissors:
+    elif game_choice == 2:
         game_two()
     else:
         print(
