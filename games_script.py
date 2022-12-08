@@ -51,9 +51,23 @@ def game_two():
     possibilities = ["pierre", "feuille", "ciseau"]
     random_index = random.randrange(len(possibilities))
     while score_user != 3 or score_ai != 3:
-        user_choice = input("Veuillez choisir entre 'pierre', 'feuille' et 'ciseau'")
+        user_choice = input("Veuillez choisir entre 'pierre', 'feuille' et 'ciseau' : \n")
         ai_choice = possibilities[random_index]
         print(f"Tu as choisi '{user_choice}' et le programme a choisi '{ai_choice}'")
+        if user_choice == ai_choice:
+            print("Il y a égalité, pas de point, manche suivante.")
+        elif user_choice == "pierre" and ai_choice == "ciseau":
+            print(f"Vous avez donc gagné un point, plus que {3-score_user} manches pour gagner.")
+            score_user = score_user + 1
+        elif user_choice == "ciseau" and ai_choice == "feuille":
+            print(f"Vous avez donc gagné un point, plus que {3 - score_user} manches pour gagner.")
+            score_user = score_user + 1
+        elif user_choice == "feuille" and ai_choice == "pierre":
+            print(f"Vous avez donc gagné un point, plus que {3 - score_user} manches pour gagner.")
+            score_user = score_user + 1
+        else:
+            print(f"Vous avez donc perdu, le score est donc de {score_user} - {score_ai}")
+            score_ai = score_ai + 1
 
 
 def main():
