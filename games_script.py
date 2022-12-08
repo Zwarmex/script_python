@@ -1,3 +1,4 @@
+import random
 from random import randint
 import argparse
 
@@ -43,7 +44,16 @@ def game_one():
 
 
 def game_two():
-    print("Vous avez choisi le jeu Rock-Paper-Scissors (Pierre-Papier-Ciseau)\n")
+    print("Vous avez choisi le jeu Rock-Paper-Scissors (Pierre-Papier-Ciseau)\n"
+          "Le jeu se fait en BO3, ce qui veut dire que le premier arrivé à 3 gagne la partie.\n")
+    score_ai = 0
+    score_user = 0
+    possibilities = ["pierre", "feuille", "ciseau"]
+    random_index = random.randrange(len(possibilities))
+    while score_user != 3 or score_ai != 3:
+        user_choice = input("Veuillez choisir entre 'pierre', 'feuille' et 'ciseau'")
+        ai_choice = possibilities[random_index]
+        print(f"Tu as choisi '{user_choice}' et le programme a choisi '{ai_choice}'")
 
 
 def main():
