@@ -12,7 +12,7 @@ def game_one():
     maximum = input("Ensuite, veuillez entrer le nombre maximum :\n")
     random_number = randint(int(minimum), int(maximum))
 
-    nbr = input("\n>Devinez le nombre en un minimum d'essai. \n>Quel nombre choissisez vous ? : \n>> ")
+    nbr = input("\n>Devinez le nombre en un minimum d'essai. \n>Quel nombre choissisez-vous ? : \n>> ")
 
     while int(nbr) != random_number:
         while int(nbr) > 50:
@@ -50,12 +50,11 @@ def game_two():
     score_user = 0
     possibilities = ["pierre", "feuille", "ciseau"]
     random_index = random.randrange(len(possibilities))
-    while score_user < 3 or score_ai < 3:
+    while score_user <= 3 or score_ai <= 3:
         user_choice = input("Veuillez choisir entre 'pierre', 'feuille' et 'ciseau' : \n")
         while user_choice not in possibilities:
             user_choice = input("Vous n'avez pas rentré un élément correcte, choisissez entre 'pierre', 'feuille ou "
-                                "'ciseau'")
-
+                                "'ciseau'\n")
         ai_choice = possibilities[random_index]
         print(f"Tu as choisi '{user_choice}' et le programme a choisi '{ai_choice}'")
         if user_choice == ai_choice:
@@ -74,6 +73,7 @@ def game_two():
             print(f"Vous avez donc perdu, le score est donc de {score_user} - {score_ai}")
     print("Vous avez gagné !") if score_user > score_ai else print("Vous avez perdu.")
 
+
 def main():
     parser = argparse.ArgumentParser(
         description='Choisisser le jeu que vous désirez entre le GuessTheNumber et le Pierre/Feuille/Ciseau')
@@ -86,8 +86,8 @@ def main():
         game_two()
     else:
         print(
-            "Vous n'avez pas rentré une lettre correspondant à un jeu existant. Faites 'py games_script.py -h' pour "
-            "avoir plus d'informations.")
+            "Vous n'avez pas rentré une lettre correspondant à un jeu existant.\n"
+            "Faites 'py games_script.py -h' pour avoir plus d'informations.")
 
 
 if __name__ == "__main__":
