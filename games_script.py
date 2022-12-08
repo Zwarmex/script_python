@@ -50,7 +50,7 @@ def game_two():
     score_user = 0
     possibilities = ["pierre", "feuille", "ciseau"]
     random_index = random.randrange(len(possibilities))
-    while score_user != 3 or score_ai != 3:
+    while score_user < 3 or score_ai < 3:
         user_choice = input("Veuillez choisir entre 'pierre', 'feuille' et 'ciseau' : \n")
         while user_choice not in possibilities:
             user_choice = input("Vous n'avez pas rentré un élément correcte, choisissez entre 'pierre', 'feuille ou "
@@ -72,7 +72,7 @@ def game_two():
         else:
             score_ai = score_ai + 1
             print(f"Vous avez donc perdu, le score est donc de {score_user} - {score_ai}")
-
+    print("Vous avez gagné !") if score_user > score_ai else print("Vous avez perdu.")
 
 def main():
     parser = argparse.ArgumentParser(
