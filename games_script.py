@@ -34,7 +34,7 @@ def game_one():
     if int(nbr) == 0:
         nbr_essai -= 1
         if nbr_essai <= 1:
-            print("\n### Vous avez décidé d'arrêter, vous avez efectué " + str(nbr_essai) + " essai. ###")
+            print("\n### Vous avez décidé d'arrêter, vous avez effectué " + str(nbr_essai) + " essai. ###")
         elif nbr_essai > 1:
             print("\n### Vous avez décidé d'arrêter, vous avez effectué " + str(nbr_essai) + " essais. ###")
     elif nbr_essai == 1:
@@ -52,22 +52,26 @@ def game_two():
     random_index = random.randrange(len(possibilities))
     while score_user != 3 or score_ai != 3:
         user_choice = input("Veuillez choisir entre 'pierre', 'feuille' et 'ciseau' : \n")
+        while user_choice not in possibilities:
+            user_choice = input("Vous n'avez pas rentré un élément correcte, choisissez entre 'pierre', 'feuille ou "
+                                "'ciseau'")
+
         ai_choice = possibilities[random_index]
         print(f"Tu as choisi '{user_choice}' et le programme a choisi '{ai_choice}'")
         if user_choice == ai_choice:
             print("Il y a égalité, pas de point, manche suivante.")
         elif user_choice == "pierre" and ai_choice == "ciseau":
-            print(f"Vous avez donc gagné un point, plus que {3-score_user} manches pour gagner.")
             score_user = score_user + 1
+            print(f"Vous avez donc gagné un point, plus que {3 - score_user} manches pour gagner.")
         elif user_choice == "ciseau" and ai_choice == "feuille":
-            print(f"Vous avez donc gagné un point, plus que {3 - score_user} manches pour gagner.")
             score_user = score_user + 1
+            print(f"Vous avez donc gagné un point, plus que {3 - score_user} manches pour gagner.")
         elif user_choice == "feuille" and ai_choice == "pierre":
-            print(f"Vous avez donc gagné un point, plus que {3 - score_user} manches pour gagner.")
             score_user = score_user + 1
+            print(f"Vous avez donc gagné un point, plus que {3 - score_user} manches pour gagner.")
         else:
-            print(f"Vous avez donc perdu, le score est donc de {score_user} - {score_ai}")
             score_ai = score_ai + 1
+            print(f"Vous avez donc perdu, le score est donc de {score_user} - {score_ai}")
 
 
 def main():
